@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* ============================================================
+   GIS Data Converter — Design tokens
+   Palette: deep geospatial night + signal green
+   ------------------------------------------------------------
+   --ink        #060B0A   page void
+   --panel      #0A1512   dark section
+   --panel-2    #0E1B17   raised dark surface
+   --paper      #F3F6F2   light section
+   --paper-2    #E8EEE8   light raised
+   --signal     #34D17E   primary green (CTA / accent)
+   --signal-dk  #1FA862   pressed green
+   --leaf       #6FE39B   bright highlight green
+   --mute       #8FA39A   muted text on dark
+   ============================================================ */
+
+:root {
+  --ink: #060b0a;
+  --panel: #0a1512;
+  --panel-2: #0e1b17;
+  --paper: #f3f6f2;
+  --paper-2: #e8eee8;
+  --signal: #34d17e;
+  --signal-dk: #1fa862;
+  --leaf: #6fe39b;
+  --mute: #8fa39a;
+  --line: rgba(111, 227, 155, 0.14);
+  --font-display: var(--font-space), "Segoe UI", system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-signal: var(--signal);
+  --color-signal-dk: var(--signal-dk);
+  --color-leaf: var(--leaf);
+  --color-mute: var(--mute);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: #eaf2ee;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--signal);
+  color: #04130b;
+}
+
+/* Focus ring — accessible, on-brand */
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Pointer on all clickable / interactive controls */
+a[href],
+button:not(:disabled),
+label[for],
+select:not(:disabled),
+summary,
+[role="button"]:not([aria-disabled="true"]),
+input[type="button"]:not(:disabled),
+input[type="submit"]:not(:disabled),
+input[type="reset"]:not(:disabled),
+input[type="file"]:not(:disabled),
+input[type="checkbox"]:not(:disabled),
+input[type="radio"]:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled,
+select:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+/* ---- Signature: dotted topo grid backdrop ---- */
+.topo-grid {
+  background-image:
+    radial-gradient(rgba(111, 227, 155, 0.16) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ---- Animations ---- */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes dashFlow {
+  to { stroke-dashoffset: -40; }
+}
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes ping {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  80%, 100% { transform: scale(2.4); opacity: 0; }
+}
+
+.rise { animation: riseIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.float-slow { animation: floatY 7s ease-in-out infinite; }
+.float-mid { animation: floatY 5.5s ease-in-out infinite; }
+.float-fast { animation: floatY 4.5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -85,7 +85,6 @@ export default function Page() {
     <main id="top">
       <Header />
 
-      {/* ============ HERO ============ */}
       <section className="relative overflow-hidden bg-[var(--ink)]">
         <div className="topo-grid absolute inset-0 opacity-40" aria-hidden />
         <div
@@ -93,7 +92,6 @@ export default function Page() {
           aria-hidden
         />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:py-24">
-          {/* copy */}
           <div className="rise">
             <p className="mb-4 font-display text-sm font-semibold tracking-wide text-signal">
               Convert. Transform. Simplify.
@@ -148,14 +146,12 @@ export default function Page() {
             </div>
           </div>
 
-          {/* signature visual */}
           <div className="rise" style={{ animationDelay: "0.12s" }}>
             <HeroStack />
           </div>
         </div>
       </section>
 
-      {/* ============ FORMATS ============ */}
       <section id="supported-formats" className="bg-[var(--paper)] py-20 text-[#0c1714]">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <p className="text-center font-display text-xs font-bold uppercase tracking-[0.18em] text-signal-dk">
@@ -198,7 +194,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ============ HOW IT WORKS ============ */}
       <section
         id="how-it-works"
         className="bg-gradient-to-b from-[var(--paper)] to-[#e9efe9] py-20 text-[#0c1714]"
@@ -214,7 +209,6 @@ export default function Page() {
           <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-6">
             {STEPS.map((s, i) => (
               <div key={s.n} className="relative flex flex-col items-center text-center">
-                {/* connector */}
                 {i < STEPS.length - 1 && (
                   <div
                     className="absolute left-[calc(50%+72px)] top-12 hidden h-px w-[calc(100%-72px)] md:block"
@@ -248,7 +242,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ============ FEATURES ============ */}
       <section
         id="features"
         className="relative overflow-hidden bg-[var(--panel)] py-20"
@@ -271,7 +264,6 @@ export default function Page() {
             ))}
           </div>
 
-          {/* CTA banner */}
           <div
             id="start"
             className="relative mt-16 overflow-hidden rounded-3xl border border-signal/25 bg-[linear-gradient(120deg,#0f3d2a,#0a2c20_55%,#0d2433)] px-7 py-10 sm:px-12 sm:py-12"
@@ -304,7 +296,6 @@ export default function Page() {
                 </div>
               </div>
 
-              {/* mini app preview */}
               <div className="relative hidden justify-self-end lg:block">
                 <div className="w-[300px] rounded-xl border border-white/10 bg-[#0a1512] p-2 shadow-2xl">
                   <div className="mb-2 flex gap-1.5 px-1.5 pt-1">
@@ -341,7 +332,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ============ FOOTER ============ */}
       <footer className="border-t border-[var(--line)] bg-[var(--ink)] py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-5 sm:px-8 md:flex-row">
           <a href="#top" className="flex items-center gap-2.5">

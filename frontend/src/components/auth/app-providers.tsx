@@ -6,9 +6,7 @@ import { ensureAuthToken } from "@/lib/api/token";
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    void ensureAuthToken().catch(() => {
-      /* API may be offline on first paint */
-    });
+    void ensureAuthToken().catch(() => {});
   }, []);
 
   return <AuthProvider>{children}</AuthProvider>;

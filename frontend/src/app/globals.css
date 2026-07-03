@@ -1,20 +1,5 @@
 @import "tailwindcss";
 
-/* ============================================================
-   GIS Data Converter — Design tokens
-   Palette: deep geospatial night + signal green
-   ------------------------------------------------------------
-   --ink        #060B0A   page void
-   --panel      #0A1512   dark section
-   --panel-2    #0E1B17   raised dark surface
-   --paper      #F3F6F2   light section
-   --paper-2    #E8EEE8   light raised
-   --signal     #34D17E   primary green (CTA / accent)
-   --signal-dk  #1FA862   pressed green
-   --leaf       #6FE39B   bright highlight green
-   --mute       #8FA39A   muted text on dark
-   ============================================================ */
-
 :root {
   --ink: #060b0a;
   --panel: #0a1512;
@@ -65,14 +50,12 @@ body {
   color: #04130b;
 }
 
-/* Focus ring — accessible, on-brand */
 :focus-visible {
   outline: 2px solid var(--signal);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Pointer on all clickable / interactive controls */
 a[href],
 button:not(:disabled),
 label[for],
@@ -94,14 +77,12 @@ select:disabled,
   cursor: not-allowed;
 }
 
-/* ---- Signature: dotted topo grid backdrop ---- */
 .topo-grid {
   background-image:
     radial-gradient(rgba(111, 227, 155, 0.16) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
-/* ---- Animations ---- */
 @keyframes floatY {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }

@@ -15,9 +15,6 @@ const base = (props: IconProps): IconProps => ({
   ...props,
 });
 
-/* ------------------------------------------------------------------
-   Brand
------------------------------------------------------------------- */
 export function LogoMark(props: IconProps) {
   return (
     <svg {...base({ ...props, strokeWidth: 1.6 })}>
@@ -28,9 +25,6 @@ export function LogoMark(props: IconProps) {
   );
 }
 
-/* ------------------------------------------------------------------
-   File / format icons (badge + glyph)
------------------------------------------------------------------- */
 function FileBadge({
   label,
   glyph,
@@ -97,9 +91,6 @@ export function ShapefileIcon(props: IconProps) {
   );
 }
 
-/* ------------------------------------------------------------------
-   UI / feature icons
------------------------------------------------------------------- */
 export function UploadIcon(props: IconProps) {
   return (
     <svg {...base(props)}>

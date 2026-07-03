@@ -59,7 +59,7 @@ services:
       MINIO_BUCKET: gis-files
       MINIO_SECURE: "false"
       CORS_ORIGINS: '["http://localhost:3000"]'
-      JWT_SECRET_KEY: change-me-in-production-use-a-long-random-secret
+      JWT_SECRET_KEY: 9w3NQeTU8bXjGG61VF0ke7cLOcLuT7m0HDDTTBxUrX7
     depends_on:
       postgres:
         condition: service_healthy

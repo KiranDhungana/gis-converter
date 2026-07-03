@@ -4,31 +4,8 @@ API_DESCRIPTION = """
 Geospatial file conversion service. Upload GIS files, convert between vector and raster
 formats, optionally reproject CRS, and download results.
 
-## Authentication (JWT)
-
-Protected endpoints require a **Bearer token**.
-
-1. Obtain a token from one of:
-   - `POST /api/v1/auth/guest` — anonymous session (no body)
-   - `POST /api/v1/auth/register` — create account
-   - `POST /api/v1/auth/login` — sign in
-2. Copy `access_token` from the JSON response.
-3. In Swagger UI, click **Authorize**, enter the token (without the `Bearer ` prefix), then **Authorize** again.
-4. Send the same token on every upload, task, and download request.
-
-Tasks are scoped to the JWT `sub` claim. Use the same token for the full upload → poll → download workflow.
-
-## Typical workflow
-
-1. `POST /api/v1/auth/guest` (or login/register)
-2. `POST /api/v1/upload` with `multipart/form-data`
-3. `GET /api/v1/tasks/{task_id}` until `status` is `completed`
-4. `GET /api/v1/download/{task_id}` or `GET /api/v1/tasks/{task_id}/content`
-
-## Documentation
-
-- Markdown examples: see `docs/API_EXAMPLES.md` in the repository
-- OpenAPI JSON: `/openapi.json`
+Protected endpoints require a Bearer JWT from `POST /api/v1/auth/guest`, `register`, or `login`.
+Send the token in the `Authorization` header for upload, task, and download requests.
 """
 
 TAGS_METADATA = [

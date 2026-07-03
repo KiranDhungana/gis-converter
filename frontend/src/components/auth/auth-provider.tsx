@@ -21,7 +21,6 @@ function subscribe(onStoreChange: () => void) {
   };
 }
 
-/** Primitive snapshot — required by useSyncExternalStore to stay referentially stable. */
 function getSnapshot(): string {
   return localStorage.getItem(USER_STORAGE_KEY) ?? "";
 }
@@ -38,7 +37,6 @@ function parseUser(raw: string): User | null {
       return { id: parsed.id, email: parsed.email, name: parsed.name };
     }
   } catch {
-    /* ignore invalid stored user */
   }
   return null;
 }

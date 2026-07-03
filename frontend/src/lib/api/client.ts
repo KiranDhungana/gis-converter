@@ -1,4 +1,4 @@
-import { ensureAuthToken, getAuthHeaders } from "@/lib/api/token";
+import { clearToken, ensureAuthToken, getAuthHeaders } from "@/lib/api/token";
 
 export type OutputFormat =
   | "geojson"
@@ -9,7 +9,6 @@ export type OutputFormat =
   | "geotiff"
   | "cog";
 
-// "" means auto-detect from the file extension.
 export type InputFormat = "" | OutputFormat;
 
 export type TaskStatus = "pending" | "processing" | "completed" | "failed";
@@ -69,6 +68,15 @@ const API_BASE = "/api/v1";
 const API_OFFLINE_MSG =
   "Conversion API is not running. Start Docker Desktop, then from the project root run: docker compose up";
 
+export function isApiOfflineError(error: unknown): boolean {
+  if (!(error instanceof Error)) return false;
+  return (
+    error.message === API_OFFLINE_MSG ||
+    error.message.includes("Failed to fetch") ||
+    error.message.includes("NetworkError")
+  );
+}
+
 export function formatBytes(bytes: number | null | undefined): string {
   if (bytes == null || bytes < 0) return "—";
   if (bytes < 1024) return `${bytes} B`;
@@ -91,7 +99,6 @@ function parseErrorDetail(text: string): string | undefined {
         .join("; ");
     }
   } catch {
-    /* plain-text error body */
   }
   return undefined;
 }
@@ -112,7 +119,7 @@ export async function fetchWithAuth(
   return fetch(input, { ...init, headers });
 }
 
-async function request<T>(path: string, init?: RequestInit): Promise<T> {
+async function request<T>(path: string, init?: RequestInit, retried = false): Promise<T> {
   await ensureAuthToken();
   const headers = new Headers(init?.headers);
   for (const [key, value] of Object.entries(getAuthHeaders())) {
@@ -129,6 +136,11 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   if (!res.ok) {
     const text = await res.text();
     const detail = parseErrorDetail(text);
+
+    if (res.status === 401 && !retried) {
+      clearToken();
+      return request<T>(path, init, true);
+    }
 
     if (res.status >= 500 && !detail) {
       throw new Error(API_OFFLINE_MSG);

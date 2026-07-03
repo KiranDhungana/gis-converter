@@ -1,9 +1,5 @@
 import type { CSSProperties } from "react";
 
-/**
- * Dark "GitHub-style" palette used across the converter dashboard.
- * Kept separate from the marketing/landing tokens in globals.css.
- */
 export const C = {
   bg: "#0d1117",
   panel: "#161b22",

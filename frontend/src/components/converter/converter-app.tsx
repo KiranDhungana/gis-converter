@@ -6,6 +6,7 @@ import {
   formatBytes,
   getFormats,
   getTaskPreviewUrl,
+  isApiOfflineError,
   listTasks,
   uploadFile,
   type ConversionParams,
@@ -62,12 +63,17 @@ export function ConverterApp() {
 
   useEffect(() => {
     refreshTasks().catch((e) => {
-      setApiOffline(true);
-      setBanner(e instanceof Error ? e.message : "Failed to load tasks");
+      if (isApiOfflineError(e)) {
+        setApiOffline(true);
+      } else {
+        setBanner(e instanceof Error ? e.message : "Failed to load tasks");
+      }
     });
     const intervalMs = hasActiveTasks ? 2000 : 5000;
     const interval = setInterval(() => {
-      refreshTasks().catch(() => setApiOffline(true));
+      refreshTasks().catch((e) => {
+        if (isApiOfflineError(e)) setApiOffline(true);
+      });
     }, intervalMs);
     return () => clearInterval(interval);
   }, [refreshTasks, hasActiveTasks]);

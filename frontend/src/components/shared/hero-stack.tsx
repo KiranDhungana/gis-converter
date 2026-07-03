@@ -8,18 +8,15 @@ import {
 export default function HeroStack() {
   return (
     <div className="relative mx-auto w-full max-w-md">
-      {/* glow */}
       <div
         className="absolute inset-0 -z-10 rounded-[2rem] bg-[radial-gradient(circle_at_50%_30%,rgba(52,209,126,0.18),transparent_70%)] blur-2xl"
         aria-hidden
       />
 
-      {/* main conversion card */}
       <div className="relative overflow-hidden rounded-3xl border border-[var(--line)] bg-[var(--panel-2)]/90 p-5 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.7)] backdrop-blur">
         <div className="topo-grid absolute inset-0 opacity-30" aria-hidden />
 
         <div className="relative">
-          {/* window dots */}
           <div className="mb-5 flex items-center justify-between">
             <div className="flex gap-1.5">
               <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
@@ -31,7 +28,6 @@ export default function HeroStack() {
             </span>
           </div>
 
-          {/* from → to */}
           <div className="flex items-center gap-3">
             <div className="flex flex-1 items-center gap-3 rounded-xl border border-[var(--line)] bg-[var(--ink)]/60 p-3">
               <span className="grid h-10 w-10 place-items-center rounded-lg bg-signal/12 text-signal">
@@ -62,7 +58,6 @@ export default function HeroStack() {
             </div>
           </div>
 
-          {/* map preview */}
           <div className="relative mt-4 overflow-hidden rounded-xl border border-[var(--line)] bg-[#0a1512]">
             <svg viewBox="0 0 320 180" className="h-44 w-full">
               <defs>
@@ -72,7 +67,6 @@ export default function HeroStack() {
                 </linearGradient>
               </defs>
 
-              {/* grid lines */}
               {[40, 80, 120, 160, 200, 240, 280].map((x) => (
                 <line
                   key={`v${x}`}
@@ -94,7 +88,6 @@ export default function HeroStack() {
                 />
               ))}
 
-              {/* terrain shape */}
               <path
                 d="M0 130 C 40 90, 80 110, 120 95 C 165 78, 200 120, 250 100 C 285 86, 305 104, 320 96 L 320 180 L 0 180 Z"
                 fill="url(#hs-fill)"
@@ -102,7 +95,6 @@ export default function HeroStack() {
                 strokeWidth="1.5"
               />
 
-              {/* animated route */}
               <path
                 d="M30 150 C 80 120, 110 60, 160 70 C 210 80, 240 40, 295 55"
                 fill="none"
@@ -112,14 +104,12 @@ export default function HeroStack() {
                 style={{ animation: "dashFlow 1.2s linear infinite" }}
               />
 
-              {/* nodes */}
               <circle cx="30" cy="150" r="4" fill="var(--signal)" />
               <circle cx="160" cy="70" r="4" fill="var(--leaf)" />
               <circle cx="295" cy="55" r="4" fill="var(--signal)" />
             </svg>
           </div>
 
-          {/* progress */}
           <div className="mt-4 flex items-center gap-3">
             <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10">
               <div className="h-full w-[78%] rounded-full bg-gradient-to-r from-signal-dk to-leaf" />
@@ -129,7 +119,6 @@ export default function HeroStack() {
         </div>
       </div>
 
-      {/* floating badge — top right */}
       <div className="float-mid absolute -right-4 -top-5 hidden rounded-2xl border border-[var(--line)] bg-[var(--panel-2)] px-4 py-3 shadow-xl sm:block">
         <div className="flex items-center gap-2.5">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-signal/12 text-signal">
@@ -144,7 +133,6 @@ export default function HeroStack() {
         </div>
       </div>
 
-      {/* floating badge — bottom left */}
       <div
         className="float-slow absolute -bottom-6 -left-4 hidden rounded-2xl border border-[var(--line)] bg-[var(--panel-2)] px-4 py-3 shadow-xl sm:block"
         style={{ animationDelay: "0.8s" }}

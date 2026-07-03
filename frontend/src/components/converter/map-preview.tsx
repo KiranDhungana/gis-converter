@@ -34,7 +34,6 @@ export function MapPreview({ url, format }: MapPreviewProps) {
     setError(null);
   }, [url, format]);
 
-  // Create the Leaflet map once the container is in the DOM.
   useEffect(() => {
     const el = containerRef.current;
     if (!el || mapRef.current) return;
@@ -67,7 +66,6 @@ export function MapPreview({ url, format }: MapPreviewProps) {
     };
   }, []);
 
-  // Load GeoJSON or raster onto the map when url/format changes.
   useEffect(() => {
     const map = mapRef.current;
     if (!ready || !map || !url) return;
